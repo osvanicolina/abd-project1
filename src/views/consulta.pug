@@ -1,0 +1,21 @@
+html
+    head
+        title= mensaje.title
+        
+    body(style="font-family:cursive; font-weight:400; flex-direction:column; display:flex; justify-content: center; background: linear-gradient(lightblue,blue,navy);align-items:center;")
+        ul(style="display:flex;") 
+            each val in [1,2,3,4,5,6,7,8,9,10]
+                li(style="list-style-type: none; border: solid 1px; background-color: lightblue; border-radius: 10px; margin: 5px;")
+                    h2
+                        a(href=`/query${val}`, style= "text-decoration: none; color: black; margin: 5px;")= `QUERY #${val}`
+
+        h1= `PROYECTO ABD - ${mensaje.title}`
+        table(style="border:solid 1px navy; background-color:lightgrey; border-radius:10px;")
+            thead
+                each header in mensaje.metaData
+                    th(style="border:solid black 5px; border-radius:10px; padding:5px;")= header.name
+            tbody
+                each row in mensaje.rows
+                    tr
+                        each val in row
+                            td(style="padding:5px; border: solid black 1px;border-radius:5px; text-align:center;")= val 
