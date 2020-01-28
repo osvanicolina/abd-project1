@@ -28,7 +28,7 @@ app.get('/query1', async (req, res) => {
             'SELECT index_name, table_name, column_name from user_ind_columns'
         );
         result.title = 'QUERY #1';
-        res.render('consulta.pug', { mensaje: result});
+        res.render('consulta.pug', { params: result});
        
     }catch(err){
         res.status(500).send(err);
@@ -48,7 +48,7 @@ app.get('/query2', async (req, res) => {
             'SELECT  table_name, count(index_name) index_count from user_ind_columns GROUP BY table_name'
         );
         result.title = 'QUERY #2';
-        res.render('consulta.pug', { mensaje: result});
+        res.render('consulta.pug', { params: result});
        
     }catch(err){
         res.status(500).send(err);
@@ -68,7 +68,7 @@ app.get('/query3', async (req, res) => {
             'SELECT  constraint_name, constraint_type, table_name  from user_constraints'
         );
         result.title = 'QUERY #3';
-        res.render('consulta.pug', { mensaje: result});
+        res.render('consulta.pug', { params: result});
        
     }catch(err){
         res.status(500).send(err);
@@ -88,7 +88,7 @@ app.get('/query4', async (req, res) => {
             'SELECT trigger_name, trigger_type, status, table_name FROM user_triggers'
         );
         result.title = 'QUERY #4';
-        res.render('consulta.pug', { mensaje: result});
+        res.render('consulta.pug', { params: result});
        
     }catch(err){
         res.status(500).send(err);
@@ -108,7 +108,7 @@ app.get('/query5', async (req, res) => {
             'SELECT table_name, column_name, data_length FROM  cols'
         );
         result.title = 'QUERY #5';
-        res.render('consulta.pug', { mensaje: result});
+        res.render('consulta.pug', { params: result});
        
     }catch(err){
         res.status(500).send(err);
@@ -128,7 +128,7 @@ app.get('/query6', async (req, res) => {
             'SELECT table_name, SUM(data_length) as row_size FROM  cols GROUP BY table_name'
         );
         result.title = 'QUERY #6';
-        res.render('consulta.pug', { mensaje: result});
+        res.render('consulta.pug', { params: result});
        
     }catch(err){
         res.status(500).send(err);
@@ -153,7 +153,7 @@ app.get('/query7', async (req, res) => {
                (SELECT table_name, SUM(data_length) as row_size FROM cols GROUP BY table_name) T ON TNR.table_name = T.table_name`
         );
         result.title = 'QUERY #7';
-        res.render('consulta.pug', { mensaje: result});
+        res.render('consulta.pug', { params: result});
        
     }catch(err){
         res.status(500).send(err);
@@ -174,7 +174,7 @@ app.get('/query8', async (req, res) => {
             'SELECT object_name FROM user_procedures'
         );
         result.title = 'QUERY #8';
-        res.render('consulta.pug', { mensaje: result});
+        res.render('consulta.pug', { params: result});
        
     }catch(err){
         res.status(500).send(err);
@@ -200,7 +200,7 @@ app.get('/query9', async (req, res) => {
                 ON TR.table_name = NR.table_name`
         );
         result.title = 'QUERY #9';
-        res.render('consulta.pug', { mensaje: result});
+        res.render('consulta.pug', { params: result});
        
     }catch(err){
         res.status(500).send(err);
@@ -222,7 +222,7 @@ app.get('/query10', async (req, res) => {
             SELECT index_name table_name, trunc(8192/(SUM(column_length)+8)) BLOCK_FACTOR FROM user_ind_columns GROUP BY index_name`
         );
         result.title = 'QUERY #10';
-        res.render('consulta.pug', { mensaje: result});
+        res.render('consulta.pug', { params: result});
        
     }catch(err){
         res.status(500).send(err);

@@ -1,6 +1,6 @@
 html
     head
-        title= mensaje.title
+        title= params.title
         
     body(style="font-family:cursive; font-weight:400; flex-direction:column; display:flex; justify-content: center; background: linear-gradient(lightblue,blue,navy);align-items:center;")
         ul(style="display:flex;") 
@@ -9,13 +9,13 @@ html
                     h2
                         a(href=`/query${val}`, style= "text-decoration: none; color: black; margin: 5px;")= `QUERY #${val}`
 
-        h1= `PROYECTO ABD - ${mensaje.title}`
+        h1= `PROYECTO ABD - ${params.title}`
         table(style="border:solid 1px navy; background-color:lightgrey; border-radius:10px;")
             thead
-                each header in mensaje.metaData
+                each header in params.metaData
                     th(style="border:solid black 5px; border-radius:10px; padding:5px;")= header.name
             tbody
-                each row in mensaje.rows
+                each row in params.rows
                     tr
                         each val in row
                             td(style="padding:5px; border: solid black 1px;border-radius:5px; text-align:center;")= val 
